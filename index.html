@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #f2f2f2;
+      color: #222;
+    }
+
+    /* Grid: cards are up to 300px wide, shrink on small screens,
+       and wrap onto new rows as the window gets narrower. */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 300px));
+      gap: 24px;
+      justify-content: center;
+    }
+
+    /* The card is a link, so the whole element is clickable. */
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 300 / 400;      /* 300 x 400 at full size, scales down proportionally */
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .card:focus-visible {
+      outline: 3px solid #1a73e8;
+      outline-offset: 3px;
+    }
+
+    .card-image {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .card-image img {
+      display: block;
+      width: 100%;                   /* resized to the width of the element */
+      aspect-ratio: 3 / 2;           /* keeps all images the same height; remove for natural ratio */
+      object-fit: cover;
+    }
+
+    /* Title sits on top of the image, top left, on a semi-transparent background */
+    .card-image h2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 90%;
+      margin: 0;
+      padding: 10px 16px;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .card-text {
+      flex: 1 1 auto;
+      padding: 16px 20px;
+      overflow: hidden;
+      line-height: 1.5;
+    }
+
+    .card-text p {
+      margin: 0 0 0.8em;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="grid">
+
+    <a class="card" href="https://wutigeronimo.github.io/gardens/" target="_blank" rel="noopener noreferrer">
+      <div class="card-image">
+        <img src="images/garden.png" alt="">
+        <h2>Gardens</h2>
+      </div>
+      <div class="card-text">
+        <p>Our list of garden complexes (volkstuinen) in Amsterdam</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://wutigeronimo.github.io/candy/" target="_blank" rel="noopener noreferrer">
+      <div class="card-image">
+        <img src="images/candy.png" alt="">
+        <h2>Candystore</h2>
+      </div>
+      <div class="card-text">
+        <p>What candies to get from the candy store</p>
+      </div>
+    </a>
+
+  </main>
+
+</body>
+</html>
